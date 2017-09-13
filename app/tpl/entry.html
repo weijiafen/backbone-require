@@ -1,0 +1,15 @@
+<div>
+	<hr/>
+	<p>
+		1，&lt;script data-main="app/main" src="app/lib/require.js">&lt;/script>引用require.js，并说明入口是app/main.js
+	</p>
+	<p>
+		2，main.js中require([files],function(){});的写法是按需引入files文件依赖，加载完后才执行function回调函数;app.js中define([],function(){})同理，这样写将这一方法封装成一个模块供require调用
+	</p>
+	<p>
+		3，app.js+router.js引入了backbone并新建了一个路由监听。默认根路由执行index渲染一个view(backbone中的View层)
+	</p>
+	<p>
+		4，点击entry执行路由中的entry方法构造entry的view，相当于执行app/view/entry.js中的方法
+	</p>
+</div>
