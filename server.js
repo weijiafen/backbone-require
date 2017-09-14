@@ -17,7 +17,8 @@ var server = app.listen(11111, function () {
 function proxy(path,response){
 	var opt={
 		host:"www.easy-mock.com",
-		path:`/mock/59b892a7e0dc663341a7b6ee/example/${path}`
+        path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`
+		// path:`/mock/59b892a7e0dc663341a7b6ee/example/${path}`
 	}
 	var content = '';
 	var req = http.request(opt, function(res) {  
