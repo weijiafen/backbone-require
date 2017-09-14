@@ -18,7 +18,7 @@ function proxy(path,response){
 	var opt={
 		host:"www.easy-mock.com",
         path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`
-        //测试3
+        //Test4
 	}
 	var content = '';
 	var req = http.request(opt, function(res) {  
