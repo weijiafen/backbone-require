@@ -8,16 +8,20 @@ app.use('/index.html', express.static('index.html'));
 app.get('/mock',function(request,response){
 	proxy('mock',response);
 })
+app.post('/register',function(request,response){
+    proxy('register',response,'POST');
+})
 var server = app.listen(11111, function () {
     var host = server.address().address;
     var port = server.address().port;
 
     console.log('Example app listening at http://%s:%s', host, port);
 });
-function proxy(path,response){
+function proxy(path,response,method){
 	var opt={
 		host:"www.easy-mock.com",
-        path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`
+        path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`,
+        method:method||'GET'
         //Test4
 	}
 	var content = '';
@@ -26,7 +30,7 @@ function proxy(path,response){
             console.log('return');  
             content+=body;  
         }).on("end", function () {  
-            response.writeHead(200, {'Content-Type': 'text/html'});  
+            response.writeHead(200, {'Content-Type': 'application/json'});  
             response.write(content);  
             response.end();  
         });  
