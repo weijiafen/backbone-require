@@ -12,8 +12,11 @@ define([
         render: function(param) {
             service.register().then(function(res){
                 //register执行完之后才会执行then内的方法
-                console.log(res)
-            })
+                console.log("step1")
+                return service.mock()
+            }).then(function(){
+                console.log("step2")
+            });
             
             $('#content').html(template.compile(tpl)({
                 title:"template demo",
