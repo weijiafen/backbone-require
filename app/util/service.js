@@ -7,17 +7,17 @@ define([],function(){
 		}
 		return true;
 	}
-	service.register=function(){
+	service.register=function(data){
 		var dtd=$.Deferred();
-		$.post('/register',function(res){
+		$.post('/register',data,function(res){
 			console.log("done register")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then
+				console.log(data);
 				dtd.resolve(res);
 			}else{
 				dtd.reject();
-			}
-			
+			}	
 			
 		})
 		return dtd.promise();

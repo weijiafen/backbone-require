@@ -12,7 +12,8 @@ define(function(require, exports, module) {
             "text":"text",
             "requireCss":"requireCss",
             "event":"eventDemo",
-            "params/:orderId/:applyType":"params"//订单核准
+            "params/:orderId/:applyType":"params",//订单核准
+            "register":"register"
             
 		},
 		index: function() {
@@ -61,6 +62,13 @@ define(function(require, exports, module) {
             require(['./view/params'],function(View){
                 var view = new View();
                 view.render({orderId:orderId,type:type});
+            });
+        },
+        register:function(){
+            this.index();
+            require(['./view/register'],function(View){
+                var view = new View();
+                view.render();
             });
         },
         
