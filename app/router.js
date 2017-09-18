@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 
 	// External dependencies.
 	var Backbone = require("backbone");
-
+    var isMountIndex=false
 	// Defining the application router.
 	module.exports = Backbone.Router.extend({
 		routes: {
@@ -17,6 +17,7 @@ define(function(require, exports, module) {
             
 		},
 		index: function() {
+            isMountIndex=true;
              $("#main").html('')
             require(['./view/index'],function(View){
                 var view = new View();
@@ -65,7 +66,10 @@ define(function(require, exports, module) {
             });
         },
         register:function(){
-            this.index();
+            if(!isMountIndex){
+                this.index();
+            }
+            
             require(['./view/register'],function(View){
                 var view = new View();
                 view.render();
