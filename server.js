@@ -5,12 +5,18 @@ var fs = require('fs');
 var http = require('http');
 app.use('/app', express.static('app'));
 app.use('/index.html', express.static('index.html'));
+
+
 app.get('/mock',function(request,response){
 	proxy('mock',response);
 })
 app.post('/register',function(request,response){
     proxy('register',response,'POST');
 })
+app.get('/info',function(request,response){
+    proxy('info',response);
+})
+
 var server = app.listen(11111, function () {
     var host = server.address().address;
     var port = server.address().port;

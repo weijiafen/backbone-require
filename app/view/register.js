@@ -15,19 +15,20 @@ define([
 
 
         submit: function(){
-            //dom如果重复用到，应该存在一个变量里，不要重复去取
-            //判断为空不应该==0，而是==''空字符串
-             if($('.pass').val()==0 || $('.username').val()==0 || $('.conpass').val()==0){
+            username = $('.username').val();
+            pass = $('.pass').val();
+            conpass = $('.conpass').val();
+             if(username=='' || pass=='' || conpass==''){
                     alert("请输入完整信息");
                     return false;
-                }else if ($('.pass').val()!=$('.conpass').val()) {
+                }else if (pass!=conpass) {
                     alert("密码前后不一致，请重新输入");
                     return false;
                 }else{ 
                     var data= {
-                                username : $('.username').val(),
-                                password : $('.pass').val(),
-                                conpassword : $('.conpass').val()
+                                username : username,
+                                password : pass,
+                                conpassword : conpass,
                             };
                         service.register(data);
                     }

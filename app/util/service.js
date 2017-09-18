@@ -28,14 +28,33 @@ define([],function(){
 			console.log("done mock")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then
+				console.log(res.msg);
 				dtd.resolve(res);
 			}else{
 				dtd.reject();
 			}
-			
-			
 		})
 		return dtd.promise();
 	}
+
+	service.info=function(){
+		var dtd=$.Deferred();
+		$.get('/info',function(res){
+			console.log("done info")
+			if(isSuccess(res)){
+				//执行成功会将res返回给then
+				dtd.resolve(res);
+				console.log(res.data);
+				// infoData = res.data;
+			}else{
+				dtd.reject();
+			}
+		})
+		return dtd.promise();
+	}
+
+
+
+
 	return service;
 })

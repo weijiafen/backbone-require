@@ -13,7 +13,8 @@ define(function(require, exports, module) {
             "requireCss":"requireCss",
             "event":"eventDemo",
             "params/:orderId/:applyType":"params",//订单核准
-            "register":"register"
+            "myself":"myself",
+            "register":"register",
             
 		},
 		index: function() {
@@ -26,7 +27,9 @@ define(function(require, exports, module) {
 		},
 		entry:function(){
             // $("#main").html('')
-            this.index();
+            if(!isMountIndex){
+                this.index();
+            }
 			require(['./view/entry'],function(View){
                 var view = new View();
                 view.render();
@@ -34,7 +37,9 @@ define(function(require, exports, module) {
         },
         text:function(){
             // $("#main").html('')
-            this.index();
+            if(!isMountIndex){
+                this.index();
+            }
             require(['./view/template'],function(View){
                 var view = new View();
                 view.render();
@@ -42,15 +47,18 @@ define(function(require, exports, module) {
         },
         requireCss:function(){
             // $("#main").html('')
-            this.index();
-            require(['./view/requireCss'],function(View){
+            if(!isMountIndex){
+                this.index();
+            }            require(['./view/requireCss'],function(View){
                 var view = new View();
                 view.render();
             });
         },
         eventDemo:function(){
             // $("#main").html('')
-            this.index();
+            if(!isMountIndex){
+                this.index();
+            }
             require(['./view/eventDemo'],function(View){
                 var view = new View();
                 view.render();
@@ -59,17 +67,30 @@ define(function(require, exports, module) {
         params:function(orderId,type){
         
             // $("#main").html('')
-            this.index();
+            if(!isMountIndex){
+                this.index();
+            }
             require(['./view/params'],function(View){
                 var view = new View();
                 view.render({orderId:orderId,type:type});
             });
         },
+
+
+        myself:function(){
+            if(!isMountIndex){
+                this.index();
+            }
+            require(['./view/myself'],function(View){
+                var view = new View();
+                view.render();
+            });
+        },
+        
         register:function(){
             if(!isMountIndex){
                 this.index();
             }
-            
             require(['./view/register'],function(View){
                 var view = new View();
                 view.render();
