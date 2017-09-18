@@ -15,6 +15,8 @@ define([
 
 
         submit: function(){
+            //dom如果重复用到，应该存在一个变量里，不要重复去取
+            //判断为空不应该==0，而是==''空字符串
              if($('.pass').val()==0 || $('.username').val()==0 || $('.conpass').val()==0){
                     alert("请输入完整信息");
                     return false;
