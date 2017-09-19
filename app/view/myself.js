@@ -22,7 +22,7 @@ define([
                  var gender = infoData.gender;
                  var real_name = infoData.real_name;
                  var header_img = infoData.header_img;
-                 var email = infoData.email;
+                 var e_mail = infoData.e_mail;
                  var addr = infoData.addr;
                  var phone = infoData.phone;
 
@@ -34,7 +34,7 @@ define([
                         gender:gender,
                         real_name:real_name,
                         header_img:header_img,
-                        email:email,
+                        e_mail:e_mail,
                         addr:addr,
                         phone:phone,
                     } 

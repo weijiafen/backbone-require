@@ -1,7 +1,7 @@
 define([
     "text!../tpl/register.html",
     "../util/service",
-    "css!../style/loginStyle.css",
+    // "css!../style/loginStyle.css",
     ],function(tpl,service) {
     var Backbone = require('backbone');
     var main = Backbone.View.extend({
@@ -15,10 +15,11 @@ define([
 
 
         submit: function(){
-            username = $('.username').val();
-            pass = $('.pass').val();
-            conpass = $('.conpass').val();
-             if(username=='' || pass=='' || conpass==''){
+            username = $('#username').val();
+            pass = $('#pass').val();
+            conpass = $('#conpass').val();
+            phonecode = $('#phonecode').val();
+             if(username=='' || pass=='' || conpass=='' || phonecode==''){
                     alert("请输入完整信息");
                     return false;
                 }else if (pass!=conpass) {
@@ -29,6 +30,7 @@ define([
                                 username : username,
                                 password : pass,
                                 conpassword : conpass,
+                                phonecode : phonecode,
                             };
                         service.register(data);
                     }
