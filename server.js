@@ -10,6 +10,10 @@ app.use('/index.html', express.static('index.html'));
 app.get('/mock',function(request,response){
 	proxy('mock',response);
 })
+
+app.post('/user/sendcode/username',function(request,response){
+    proxy('user/sendcode/username',response,'POST');
+})
 app.post('/register',function(request,response){
     proxy('register',response,'POST');
 })

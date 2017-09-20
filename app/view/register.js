@@ -1,16 +1,29 @@
 define([
     "text!../tpl/register.html",
     "../util/service",
-    // "css!../style/loginStyle.css",
     ],function(tpl,service) {
     var Backbone = require('backbone');
     var main = Backbone.View.extend({
         el: '#content',
         events:{
-            "click #login-button":"submit"
+            "click #login-button":"submit",
+            "click #send":"sendcode"
         },
         initialize:function () {
             // alert(123);
+        },
+
+        sendcode: function(){
+            username = $('#username').val();
+            if (username=='') {
+                alert("请输入手机号码");
+            }else{
+                var data={
+                    username : username,
+                };
+                console.log("即将进入service");
+                service.sendcode(data);
+            }
         },
 
 
@@ -29,10 +42,10 @@ define([
                     var data= {
                                 username : username,
                                 password : pass,
-                                conpassword : conpass,
                                 phonecode : phonecode,
                             };
                         service.register(data);
+                        window.location.href = "#/";
                     }
         },
 
