@@ -25,10 +25,28 @@ define([],function(){
 	}
 
 
-	service.register=function(data){
+	service.userRegister=function(data){
+		console.log("进入userRegister方法");
 		var dtd=$.Deferred();
-		$.post('/register',data,function(res){
-			console.log("done register")
+		$.post('/user/register',data,function(res){
+			console.log("done userRegister")
+			if(isSuccess(res)){
+				//执行成功会将res返回给then
+				console.log(data);
+				dtd.resolve(res);
+			}else{
+				dtd.reject();
+			}	
+			
+		})
+		return dtd.promise();
+	}
+
+
+	service.userLogin=function(data){
+		var dtd=$.Deferred();
+		$.post('/user/login',data,function(res){
+			console.log("done userLogin")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then
 				console.log(data);

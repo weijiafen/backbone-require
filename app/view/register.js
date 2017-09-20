@@ -1,12 +1,12 @@
 define([
-    "text!../tpl/register.html",
+    "text!../tpl/userPages/register.html",
     "../util/service",
     ],function(tpl,service) {
     var Backbone = require('backbone');
     var main = Backbone.View.extend({
         el: '#content',
         events:{
-            "click #login-button":"submit",
+            "click #submit":"submit",
             "click #send":"sendcode"
         },
         initialize:function () {
@@ -39,18 +39,15 @@ define([
                     alert("密码前后不一致，请重新输入");
                     return false;
                 }else{ 
-                    var data= {
+                    var data = {
                                 username : username,
                                 password : pass,
                                 phonecode : phonecode,
                             };
-                        service.register(data);
-                        window.location.href = "#/";
+                        service.userRegister(data);
+                        // window.location.href = "#/";
                     }
         },
-
-
-
 
         render: function(param) {
             $('#content').html(tpl);

@@ -10,7 +10,7 @@ define([
             // alert(123);
         },
         render: function(param) {
-            service.register().then(function(res){
+            service.userRegister().then(function(res){
                 //register执行完之后才会执行then内的方法
                 console.log("step1")
                 return service.mock()

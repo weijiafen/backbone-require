@@ -15,6 +15,7 @@ define(function(require, exports, module) {
             "params/:orderId/:applyType":"params",//订单核准
             "myself":"myself",
             "register":"register",
+            "login":"login",
             
 		},
 		index: function() {
@@ -76,7 +77,6 @@ define(function(require, exports, module) {
             });
         },
 
-
         myself:function(){
             if(!isMountIndex){
                 this.index();
@@ -92,6 +92,16 @@ define(function(require, exports, module) {
                 this.index();
             }
             require(['./view/register'],function(View){
+                var view = new View();
+                view.render();
+            });
+        },
+
+        login:function(){
+            if(!isMountIndex){
+                this.index();
+            }
+            require(['./view/login'],function(View){
                 var view = new View();
                 view.render();
             });

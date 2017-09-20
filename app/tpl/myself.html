@@ -1,7 +1,7 @@
 
 <div>
-	<h3>这是个人中心页面</h3>
-		<ul>
+	
+<!-- 		<ul>
 			<li class="text-info">ID：{{data.id}}</li>
 			<li class="text-primary">性别：{{data.gender}}</li>
 			<li class="text-info">真实姓名：{{data.real_name}}</li>
@@ -9,7 +9,73 @@
 			<li class="text-info">地址：{{data.addr}}</li>
 			<li class="text-primary">邮箱：{{data.e_mail}}</li>
 			<li class="text-info">电话：{{data.phone}}</li>
-		</ul>
-</div>
+		</ul> -->
+	<div class="bs-example">
+		<h2>这是个人中心页面</h2>
+		<br>
+	    <form role="form">
+	      <div class="form-group">
+	        <label for="id">ID号码</label>
+	        <input class="form-control" id="id" placeholder="ID号码" value="{{data.id}}" readonly="readonly">
+	      </div> 
 
+
+
+
+
+       <div class="radio">
+        <label><input type="radio" name="gender" value="1" checked>男</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="gender" value="0">女</label>
+      </div>
+<!--  	      <div class="form-group">
+	        <label for="gender">性别</label>
+	        <input class="form-control" id="gender" placeholder="性别" value="{{data.gender}}">
+	      </div> 
+ -->
+ 	      <div class="form-group">
+	        <label for="real_name">真实姓名</label>
+	        <input class="form-control" id="real_name" placeholder="真实姓名" value="{{data.real_name}}">
+	      </div> 
+
+<!--  	      <div class="form-group">
+	        <label for="header_img">头像</label>
+	        <img src="person_3.png" id="header_img" alt="头像" />
+	      </div> 
+	      <div class="form-group">
+	        <label for="exampleInputFile">File input</label>
+	        <input type="file" id="exampleInputFile">
+	      </div> -->
+
+ 	      <div class="form-group">
+	        <label for="header_img">头像</label>
+	        <input class="form-control" id="header_img" placeholder="头像" value="{{data.header_img}}">
+	      </div> 
+
+	      <div class="form-group">
+	        <label for="addr">现住地址</label>
+	        <input class="form-control" id="addr" placeholder="现住地址" value="{{data.addr}}">
+	      </div> 
+		
+		  <div class="form-group">
+	        <label for="e_mail">邮箱地址</label>
+	        <input class="form-control" id="e_mail" placeholder="邮箱地址" value="{{data.e_mail}}">
+	      </div> 
+
+	      <div class="form-group">
+	        <label for="phone">电话号码</label>
+	        <input class="form-control" id="phone" placeholder="电话号码" value="{{data.phone}}">
+	      </div> 
+
+
+
+
+	      <button type="submit" class="btn btn-default">Submit</button>
+	    </form>
+	 </div>
+
+
+
+</div>
 
