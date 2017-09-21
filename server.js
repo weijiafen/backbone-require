@@ -19,8 +19,8 @@ app.post('/user/register',function(request,response){
 })
 
 
-app.get('/info',function(request,response){
-    proxy('/info',response);
+app.get('/user/checkSaftyInfo',function(request,response){
+    proxy('user/checkSaftyInfo',response);
 })
 app.post('/user/login',function(request,response){
     proxy('user/login',response,'POST');
@@ -37,11 +37,14 @@ var server = app.listen(11111, function () {
 
 function proxy(path,response,method){
 	var opt={
-		host:"www.easy-mock.com",
-        path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`,
+		// host:"www.easy-mock.com",
+  //       path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`,
+  
         // host:"http://172.20.10.2",
-        // port:"8080",
-        // path:`testPage/${path}`,
+
+        host:"172.20.10.2",
+        port:"8080",
+        path:`testPage/${path}`,
 
         method:method||'GET'
         //Test4

@@ -76,7 +76,7 @@ define([],function(){
 
 	service.info=function(){
 		var dtd=$.Deferred();
-		$.get('/info',function(res){
+		$.get('/user/checkSaftyInfo',function(res){
 			console.log("done info")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then
