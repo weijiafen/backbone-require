@@ -31,6 +31,8 @@ var server = app.listen(11111, function () {
 
     console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
 function proxy(path,response,method){
 	var opt={
 		host:"www.easy-mock.com",

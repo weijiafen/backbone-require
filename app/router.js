@@ -16,6 +16,9 @@ define(function(require, exports, module) {
             "myself":"myself",
             "register":"register",
             "login":"login",
+            "regulation":"regulation",
+            "comRegulation":"comRegulation",
+            "record":"record",
             
 		},
 		index: function() {
@@ -102,6 +105,38 @@ define(function(require, exports, module) {
                 this.index();
             }
             require(['./view/login'],function(View){
+                var view = new View();
+                view.render();
+            });
+        },
+
+        regulation:function(){
+            // $("#main").html('')
+            if(!isMountIndex){
+                this.index();
+            }
+            require(['./view/regulation'],function(View){
+                var view = new View();
+                view.render();
+            });
+        },
+        comRegulation:function(){
+            // $("#main").html('')
+            if(!isMountIndex){
+                this.index();
+            }
+            require(['./view/comRegulation'],function(View){
+                var view = new View();
+                view.render();
+            });
+        },
+
+        record:function(){
+            // $("#main").html('')
+            if(!isMountIndex){
+                this.index();
+            }
+            require(['./view/record'],function(View){
                 var view = new View();
                 view.render();
             });
