@@ -42,7 +42,7 @@ define([
                     var data = {
                                 username : username,
                                 password : pass,
-                                phonecode : phonecode,
+                                verfication_code : phonecode,
                             };
                         service.userRegister(data);
                         // window.location.href = "#/";

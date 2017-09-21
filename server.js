@@ -17,6 +17,8 @@ app.post('/user/sendcode/:username',function(request,response){
 app.post('/user/register',function(request,response){
     proxy('user/register',response,'POST');
 })
+
+
 app.get('/info',function(request,response){
     proxy('/info',response);
 })
@@ -39,7 +41,8 @@ function proxy(path,response,method){
         path:`/mock/59b8a7b2e0dc663341a7ee9a/test/${path}`,
         // host:"http://172.20.10.2",
         // port:"8080",
-        // path:`${path}`,
+        // path:`testPage/${path}`,
+
         method:method||'GET'
         //Test4
 	}
