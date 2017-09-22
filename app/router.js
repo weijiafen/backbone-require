@@ -22,124 +22,125 @@ define(function(require, exports, module) {
             
 		},
 		index: function() {
-            isMountIndex=true;
-             $("#main").html('')
-            require(['./view/index'],function(View){
-                var view = new View();
-                view.render();
-            });
+            var dtd=$.Deferred();
+            if(!isMountIndex){
+                $("#main").html('')
+                require(['./view/index'],function(View){
+                    var view = new View();
+                    view.render();
+                    dtd.resolve();
+                    isMountIndex=true;
+                });
+            }else{
+                dtd.resolve();
+            }
+            
+            return dtd.promise();
 		},
 		entry:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-			require(['./view/entry'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/entry'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+			
         },
         text:function(){
             // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/template'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/template'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         requireCss:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }            require(['./view/requireCss'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/requireCss'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         eventDemo:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/eventDemo'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/eventDemo'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         params:function(orderId,type){
-        
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/params'],function(View){
-                var view = new View();
-                view.render({orderId:orderId,type:type});
-            });
+            this.index().then(function(){
+                require(['./view/params'],function(View){
+                    var view = new View();
+                    view.render({orderId:orderId,type:type});
+                });
+            })
+            
         },
 
         myself:function(){
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/myself'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/myself'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         
         register:function(){
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/register'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/register'],function(View){
+                    var view = new View();
+                    view.render();
+                }); 
+            })
+            
         },
 
         login:function(){
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/login'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/login'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
 
         regulation:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/regulation'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/regulation'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         comRegulation:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/comRegulation'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/comRegulation'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
 
         record:function(){
-            // $("#main").html('')
-            if(!isMountIndex){
-                this.index();
-            }
-            require(['./view/record'],function(View){
-                var view = new View();
-                view.render();
-            });
+            this.index().then(function(){
+                require(['./view/record'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
         },
         
 	});
