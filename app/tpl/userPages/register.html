@@ -36,12 +36,12 @@
             <form class="form-signin wow fadeInUp" action="">
                 <h2 class="form-signin-heading">个人用户注册</h2>
                 <div class="login-wrap">
-                    <input type="text" class="form-control" id="username" placeholder="手机号" autofocus="">
+                    <input type="text" class="form-control" id="username" placeholder="手机号" autofocus="" name="username">
 
-                    <input type="text" class="form-control" id="phonecode" placeholder="短信验证码" style="width: 150px;float: left">
+                    <input type="text" class="form-control" id="verification_code" name="verification_code" placeholder="短信验证码" style="width: 150px;float: left">
                     <button class="btn btn-warning" id="send" type="button" style="margin-top:3px;float:right;">获取短信验证码</button>
 					
-                    <input type="password" class="form-control" id="pass" placeholder="密码">
+                    <input type="password" class="form-control" id="pass" name="password" placeholder="密码">
                     <input type="password" class="form-control" id="conpass" placeholder="确认密码">
 
 <!--                     <label class="checkbox">

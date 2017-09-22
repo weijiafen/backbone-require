@@ -8,12 +8,12 @@ define([],function(){
 		return true;
 	}
 	service.sendcode=function(data){
+		console.log("进入输出验证码方法");
 		var dtd=$.Deferred();
-		$.post('/user/sendcode/username',data,function(res){
+		$.post('/user/sendcode/:username',data,function(res){
 			console.log("done sendcode")
 			if(isSuccess(res)){
-				//执行成功会将res返回给then
-				
+				//执行成功会将res返回给then				
 				dtd.resolve(res);
 				console.log(res.msg);
 			}else{
@@ -76,7 +76,7 @@ define([],function(){
 
 	service.info=function(){
 		var dtd=$.Deferred();
-		$.get('/user/checkSaftyInfo',function(res){
+		$.get('/user/checkUserInfo',function(res){
 			console.log("done info")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then

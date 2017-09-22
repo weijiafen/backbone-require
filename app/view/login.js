@@ -16,6 +16,7 @@ define([
         submit:function(){
             username = $('#username').val();
             password = $('#password').val();
+            verification_code = $('#code').val();
             if (username==''||password=='') {
                 alert("请输出完整信息");
                 return false;
@@ -23,6 +24,7 @@ define([
                 var data = {
                     username : username,
                     password : password,
+                    verification_code:verification_code,
                 };
                 service.userLogin(data);
             }

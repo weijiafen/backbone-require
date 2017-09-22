@@ -6,8 +6,8 @@ var http = require('http');
 var request2 = require('request');
 var bodyParser=require('body-parser')
 //使用的mock方法选项
-// var proxy=easyMockproxy
-var proxy=requestProxy;
+var proxy=easyMockproxy;
+// var proxy=requestProxy;
 app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
 app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
   extended: true
@@ -28,8 +28,8 @@ app.post('/user/register',function(request,response){
 })
 
 
-app.get('/user/checkSaftyInfo',function(request,response){
-    proxy('user/checkSaftyInfo',response);
+app.get('/user/checkUserInfo',function(request,response){
+    proxy('user/checkUserInfo',response);
 })
 app.post('/user/login',function(request,response){
     proxy('user/login',response,'POST');
@@ -81,6 +81,7 @@ function requestProxy(path,response,method,request){
     }
     if(method=='POST'){
         requestConfig.body=request.body
+        // requestConfig.body=JSON.stringify(request.body)
         request2(requestConfig,function(r,resp,body){
             console.log("resp")
             response.writeHead(200, {'Content-Type': 'application/json'});  

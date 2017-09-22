@@ -21,7 +21,7 @@ define([
                 var data={
                     username : username,
                 };
-                console.log("即将进入service");
+                // console.log("即将进入service");
                 service.sendcode(data);
             }
         },
@@ -31,8 +31,8 @@ define([
             username = $('#username').val();
             pass = $('#pass').val();
             conpass = $('#conpass').val();
-            phonecode = $('#phonecode').val();
-             if(username=='' || pass=='' || conpass=='' || phonecode==''){
+            verification_code = $('#verification_code').val();
+             if(username=='' || pass=='' || conpass=='' || verification_code==''){
                     alert("请输入完整信息");
                     return false;
                 }else if (pass!=conpass) {
@@ -42,11 +42,13 @@ define([
                     var data = {
                                 username : username,
                                 password : pass,
-                                verfication_code : phonecode,
+                                verification_code : verification_code,
                             };
                         service.userRegister(data);
                         // window.location.href = "#/";
                     }
+
+
         },
 
         render: function(param) {
