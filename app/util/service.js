@@ -38,7 +38,7 @@ define([],function(){
 				dtd.reject();
 			}	
 			
-		})
+		},"json")
 		return dtd.promise();
 	}
 
