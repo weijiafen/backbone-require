@@ -19,6 +19,7 @@ define(function(require, exports, module) {
             "regulation":"regulation",
             "comRegulation":"comRegulation",
             "record":"record",
+            "safetyInfo":"safetyInfo",
             
 		},
 		index: function() {
@@ -136,6 +137,16 @@ define(function(require, exports, module) {
         record:function(){
             this.index().then(function(){
                 require(['./view/record'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        safetyInfo:function(){
+            this.index().then(function(){
+                require(['./view/safetyInfo'],function(View){
                     var view = new View();
                     view.render();
                 });

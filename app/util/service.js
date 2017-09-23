@@ -37,7 +37,6 @@ define([],function(){
 			}else{
 				dtd.reject();
 			}	
-			
 		},"json")
 		return dtd.promise();
 	}
@@ -89,6 +88,38 @@ define([],function(){
 		})
 		return dtd.promise();
 	}
+
+
+	service.safetyInfo=function(){
+		var dtd=$.Deferred();
+		$.get('/user/safetyInfo',function(res){
+			console.log("done safetyInfo")
+			if(isSuccess(res)){
+				//执行成功会将res返回给then
+				dtd.resolve(res);
+				console.log(res.data);
+				// infoData = res.data;
+			}else{
+				dtd.reject();
+			}
+		})
+		return dtd.promise();
+	}
+
+	// 	service.safetyInfo=function(data){
+	// 	var dtd=$.Deferred();
+	// 	$.get('/user/safetyInfo',data,function(res){
+	// 		console.log("done safetyInfo")
+	// 		if(isSuccess(res)){
+	// 			//执行成功会将res返回给then
+	// 			console.log(res.data);
+	// 			dtd.resolve(res);
+	// 		}else{
+	// 			dtd.reject();
+	// 		}
+	// 	})
+	// 	return dtd.promise();
+	// }
 
 
 

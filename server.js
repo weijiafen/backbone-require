@@ -35,6 +35,10 @@ app.post('/user/login',function(request,response){
     proxy('user/login',response,'POST');
 })
 
+app.get('/user/safetyInfo',function(request,response){
+    proxy('user/safetyInfo',response);
+})
+
 
 var server = app.listen(11111, function () {
     var host = server.address().address;

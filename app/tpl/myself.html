@@ -1,5 +1,22 @@
 
-<div>
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs" style="margin-bottom: 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-4">
+                    <h1>个人中心</h1>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#/">Home</a></li>
+                        <li class="active">个人中心</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
 	
 <!-- 		<ul>
 			<li class="text-info">ID：{{data.id}}</li>
@@ -10,8 +27,8 @@
 			<li class="text-primary">邮箱：{{data.e_mail}}</li>
 			<li class="text-info">电话：{{data.phone}}</li>
 		</ul> -->
+<div>
 	<div class="bs-example">
-		<h2>这是个人中心页面</h2>
 		<br>
 	    <form role="form">
 	      <div class="form-group">
@@ -34,7 +51,7 @@
 	        <input class="form-control" id="gender" placeholder="性别" value="{{data.gender}}">
 	      </div> 
  -->
- 	      <div class="form-group">
+ 	      <div class="form-group" >
 	        <label for="real_name">真实姓名</label>
 	        <input class="form-control" id="real_name" placeholder="真实姓名" value="{{data.real_name}}">
 	      </div> 
@@ -71,7 +88,7 @@
 
 
 
-	      <button type="submit" class="btn btn-default">Submit</button>
+	      <button type="submit" class="btn btn-primary">Submit</button>
 	    </form>
 	 </div>
 

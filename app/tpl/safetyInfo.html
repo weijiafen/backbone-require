@@ -1,0 +1,75 @@
+
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs" style="margin-bottom: 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-4">
+                    <h1>安全中心</h1>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#/">Home</a></li>
+                        <li class="active">安全中心</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+<div class="bs-example">
+<!--  		<ul>
+			<li class="text-info">ID：{{data.id}}</li>
+			<li class="text-primary">安全问题：{{data.question}}</li>
+			<li class="text-info">安全答案：{{data.answer}}</li> -->
+<!-- 			<li class="text-primary">安全邮箱：{{data.safety_email}}</li>
+			<li > {{data.finalEmail}}</li> -->
+<!-- 			<li class="text-info">安全级别:{{data.safety_level}}</li>
+		</ul> 
+ -->
+
+	<form role="form" action="" method="get">
+
+		  <div class="form-group">
+	        <h5 style="font-weight: bold;">安全问题：{{data.question}}</h5>
+	      
+
+	      
+	        <label for="answer">安全答案：</label>
+	        <input class="form-control" id="checkAnswer" name="answer">
+
+			<h5 style="font-weight: bold;">安全邮箱：{{data.finalEmail}}</h5>
+
+	        <br>
+	        <button class="btn btn-primary" type="button" id="safeSubmit">提交</button>
+	        &emsp;&emsp;
+	        <a data-toggle="modal" data-target="#myModal" style="cursor: pointer">
+             	<i class="fa fa-angle-right pr-10"/>忘记安全密码？
+            </a>
+		  	
+		  	<!-- 模态框（Modal） -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title" id="myModalLabel">可通过安全邮箱找回密码</h4>
+			            </div>
+			            <div class="modal-body">
+			            	 <label for="safety_email">安全邮箱地址：</label>
+	       					 <input class="form-control" id="writeEmail" name="safety_email">
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			                <button type="button" class="btn btn-primary" id="sendEmail">发送验证码</button>
+			            </div>
+			        </div><!-- /.modal-content -->
+			    </div><!-- /.modal -->
+			</div>
+
+	      </div> 
+	</form>
+</div>
+
+
+
