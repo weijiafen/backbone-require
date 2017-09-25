@@ -14,8 +14,8 @@ define([
 
 
         submit:function(){
-            username = $('#username').val();
-            password = $('#password').val();
+            var username = $('#username').val();
+            var password = $('#password').val();
             verification_code = $('#code').val();
             if (username==''||password=='') {
                 alert("请输出完整信息");

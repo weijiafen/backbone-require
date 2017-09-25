@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-lg-8 col-sm-8">
                     <ol class="breadcrumb pull-right">
-                        <li><a href="#/">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li class="active">个人中心</li>
                     </ol>
                 </div>
@@ -17,82 +17,172 @@
     </div>
     <!--breadcrumbs end-->
 
+
+<div style="width: 100%;font-weight:bold">
 	
-<!-- 		<ul>
-			<li class="text-info">ID：{{data.id}}</li>
-			<li class="text-primary">性别：{{data.gender}}</li>
-			<li class="text-info">真实姓名：{{data.real_name}}</li>
-			<li class="text-primary">头像：{{data.header_img}}</li>
-			<li class="text-info">地址：{{data.addr}}</li>
-			<li class="text-primary">邮箱：{{data.e_mail}}</li>
-			<li class="text-info">电话：{{data.phone}}</li>
-		</ul> -->
-<div>
-	<div class="bs-example">
-		<br>
-	    <form role="form">
-	      <div class="form-group">
-	        <label for="id">ID号码</label>
-	        <input class="form-control" id="id" placeholder="ID号码" value="{{data.id}}" readonly="readonly">
-	      </div> 
+	<div style="margin:20px">
+
+		<blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        ID：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.id}}
+	      </middle>
+	    </blockquote>
+
+		<blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        性别：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.sex}}
+	      </middle>
+	    </blockquote>
 
 
 
+		<blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        真实姓名：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.realName}}
+	      </middle>
+	    </blockquote>
 
+		<blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        头像：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.headerImg}}
+	      </middle>
+	    </blockquote>
 
-       <div class="radio">
-        <label><input type="radio" name="gender" value="1" checked>男</label>
-      </div>
-      <div class="radio">
-        <label><input type="radio" name="gender" value="0">女</label>
-      </div>
-<!--  	      <div class="form-group">
-	        <label for="gender">性别</label>
-	        <input class="form-control" id="gender" placeholder="性别" value="{{data.gender}}">
-	      </div> 
+	    <blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        地址：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.addr}}
+	      </middle>
+	    </blockquote>
+
+	    <blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        邮箱：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.email}}
+	      </middle>
+	    </blockquote>
+
+	    <blockquote style="background-color:#F0FFF0">
+	      <div style="color: #48cfad">
+	        电话：
+	        <br>
+	      </div>
+	      <middle>
+	        　　{{data.phone}}
+	      </middle>
+	    </blockquote>
+
+<!-- 	    <form>
+	用户名：<input type="text" name="usr_name" required="required" /><br />
+	<input type="submit" value="提交" />
+</form>
  -->
- 	      <div class="form-group" >
-	        <label for="real_name">真实姓名</label>
-	        <input class="form-control" id="real_name" placeholder="真实姓名" value="{{data.real_name}}">
-	      </div> 
 
-<!--  	      <div class="form-group">
-	        <label for="header_img">头像</label>
-	        <img src="person_3.png" id="header_img" alt="头像" />
-	      </div> 
-	      <div class="form-group">
-	        <label for="exampleInputFile">File input</label>
-	        <input type="file" id="exampleInputFile">
-	      </div> -->
+		<!-- 按钮触发模态框 -->
+		<button class="btn btn-primary" data-toggle="modal" data-target="#alterInfo">修改</button>
+		<!-- 模态框（Modal） -->
 
- 	      <div class="form-group">
-	        <label for="header_img">头像</label>
-	        <input class="form-control" id="header_img" placeholder="头像" value="{{data.header_img}}">
-	      </div> 
+		<div class="modal fade" id="alterInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title" id="myModalLabel">
+						<span  class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+		                修改个人信息</h4>
+		            </div>
+		            <div class="modal-body">
 
-	      <div class="form-group">
-	        <label for="addr">现住地址</label>
-	        <input class="form-control" id="addr" placeholder="现住地址" value="{{data.addr}}">
-	      </div> 
-		
-		  <div class="form-group">
-	        <label for="e_mail">邮箱地址</label>
-	        <input class="form-control" id="e_mail" placeholder="邮箱地址" value="{{data.e_mail}}">
-	      </div> 
+					<form>
+						
+					
+				      <div class="form-group">
+				        <label for="id">ID号码</label>
+				        <input class="form-control" id="id" placeholder="ID号码" value="{{data.id}}" readonly="readonly">
+				      </div> 
+						
+						<div id="gender">
+					       <div class="radio">
+					        <label><input type="radio" name="gender" id="male" value="1">男</label>
+					      </div>
+					      <div class="radio">
+					        <label><input type="radio" name="gender" id="female" value="0">女</label>
+					      </div>
+					    </div>	
 
-	      <div class="form-group">
-	        <label for="phone">电话号码</label>
-	        <input class="form-control" id="phone" placeholder="电话号码" value="{{data.phone}}">
-	      </div> 
+			 	      <div class="form-group" >
+				        <label for="realName">真实姓名</label>
+				        <input class="form-control" id="realName" placeholder="真实姓名" value="{{data.realName}}" type="text" required="required">
+				      </div> 
+
+				<!--  	      <div class="form-group">
+					        <label for="headerImg">头像</label>
+					        <img src="person_3.png" id="headerImg" alt="头像" />
+					      </div> 
+					      <div class="form-group">
+					        <label for="exampleInputFile">File input</label>
+					        <input type="file" id="exampleInputFile">
+					      </div> -->
+
+			 	      <div class="form-group">
+				        <label for="headerImg">头像</label>
+				        <input class="form-control" id="headerImg" placeholder="头像" value="{{data.headerImg}}">
+				      </div> 
+
+				      <div class="form-group">
+				        <label for="addr">现住地址</label>
+				        <input class="form-control" id="addr" placeholder="现住地址" value="{{data.addr}}">
+				      </div> 
+					
+					  <div class="form-group">
+				        <label for="email">邮箱地址</label>
+				        <input class="form-control" id="email" placeholder="邮箱地址" value="{{data.email}}">
+				      </div> 
+
+				      <div class="form-group">
+				        <label for="phone">电话号码</label>
+				        <input class="form-control" id="phone" placeholder="电话号码" value="{{data.phone}}">
+				      </div>
 
 
+		        	</div>
 
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                <button type="submit" class="btn btn-primary" id="perfectInfo">提交</button>
+		            </div>
+		        </form>
 
-	      <button type="submit" class="btn btn-primary">Submit</button>
-	    </form>
-	 </div>
+		            				   
+		        </div><!-- /.modal-content -->
 
+		    </div><!-- /.modal -->
+		</div>
 
-
+	</div>
 </div>
+
+
 

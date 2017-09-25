@@ -10,55 +10,75 @@ define([
     var main = Backbone.View.extend({
         el: '#content',
         events:{
-            "click #safeSubmit":"safeSubmit",
-            "click #sendEmail":"sendEmail",
+            "click #updateEmail":"updateEmail",
+            "click #updatePayment":"updatePayment",
         },
 
         initialize:function () {
             // alert(123);
         },
 
-
-        safeSubmit:function(){
-            var checkAnswer = $('#checkAnswer').val();
+        updateEmail:function(){
+            var checkAnswer = $('.email .checkAnswer').val();
             if (checkAnswer==answer) {
-                alert("密码一致，等待页面更新");
+                var writeEmail = $('#writeEmail').val();
+                if(writeEmail!=''){
+                    console.log("新安全邮箱是："+writeEmail);
+                }else{
+                    alert("请输入新安全邮箱地址");
+                }
             }else{
-                alert("密码不一致，请重新输入");
+                alert("安全不一致，请重新输入");
             }
         },
 
-        sendEmail:function(){
-            var writeEmail = $('#writeEmail').val();
-            if (safety_email==writeEmail) {
-                alert("邮箱一致，等待页面更新");
+        updatePayment:function(){
+            var checkAnswer = $('.pay .checkAnswer').val();
+            if (checkAnswer==answer) {
+                var writePayment = $('#writePayment').val();
+                if(writePayment!=''){
+                    console.log("新支付密码是："+writePayment);
+                }else{
+                    alert("请输入新支付密码");
+                }
             }else{
-                alert("邮箱不一致emmm");
+                alert("安全问题不一致，请重新输入");
             }
         },
+
+
 
 
          render: function(param) {
-
-
-
-
-
             service.safetyInfo().then(function(res){
                 safeData = res.data;
 
                 id = safeData.id;
                 question = safeData.question;
                 answer = safeData.answer;
-                safety_email = safeData.safety_email;
-                safety_level = safeData.safety_level;
+                safetyEmail = safeData.safetyEmail;
+                safetyLevel = safeData.safetyLevel;
+                paymentPassword =  safeData.paymentPassword;
 
                 /*加密邮箱设置*/
-                 frontEmail = safety_email.substring(0,3);
-                 replaceEmail = safety_email.substring(3,8);
-                 behindEmail = safety_email.substring(8);
+                 frontEmail = safetyEmail.substring(0,3);
+                 replaceEmail = safetyEmail.substring(3,8);
+                 behindEmail = safetyEmail.substring(8);
                  becomeEmail = replaceEmail.replace(replaceEmail,"*****");
                  finalEmail = frontEmail + becomeEmail + behindEmail;
+
+
+                 /*加密问题设置*/
+
+                 coverAnswer = answer.replace(answer,"**************");
+                 
+                 /*加密支付密码*/
+                 // if (coverPayment!='') {
+                 //    coverPayment = paymentPassword.replace(paymentPassword,"*******");
+                 // }
+                 coverPayment = paymentPassword.replace(paymentPassword,"*******");
+                 
+
 
 
                  $('#content').html(template.compile(tpl)({
@@ -67,24 +87,15 @@ define([
                         id : id,
                         question:question,
                         answer:answer,
-                        safety_email:safety_email,
-                        safety_level:safety_level,
+                        safetyEmail:safetyEmail,
+                        safetyLevel:safetyLevel,
+                        paymentPassword:paymentPassword,
+
                         finalEmail:finalEmail,
+                        coverAnswer:coverAnswer,
+                        coverPayment:coverPayment,
                     },
-
-
-
                 }));
-
-            //  frontEmail = safety_email.substring(0,3);
-            //  replaceEmail = safety_email.substring(3,8);
-            //  behindEmail = safety_email.substring(8);
-            //  becomeEmail = replaceEmail.replace(replaceEmail,"*****");
-            //  finalEmail = frontEmail + becomeEmail + behindEmail;
-            // console.log(finalEmail);
-
-
-
             });  
 
         },

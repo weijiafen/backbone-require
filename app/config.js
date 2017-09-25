@@ -7,7 +7,8 @@ require.config({
 		"underscore": "lib/lodash/dist/lodash.underscore",
 
 		// Map remaining vendor dependencies.
-		"jquery": "lib/jquery.min",
+		// "jquery": "lib/jquery.min",       <script src="app/demoStyle/js/jquery-1.8.3.min.js"></script>
+        "jquery": "app/demoStyle/js/jquery-1.8.3.min",
 		"backbone": "lib/backbone.min",
 		"text": "lib/text",
 		"art-template":"lib/template-web",

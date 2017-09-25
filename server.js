@@ -23,6 +23,7 @@ app.get('/mock',function(request,response){
 app.post('/user/sendcode/:username',function(request,response){
     proxy(`user/sendcode/${request.params.username}`,response,'POST');
 })
+
 app.post('/user/register',function(request,response){
     proxy('user/register',response,'POST',request);
 })
@@ -31,6 +32,12 @@ app.post('/user/register',function(request,response){
 app.get('/user/checkUserInfo',function(request,response){
     proxy('user/checkUserInfo',response);
 })
+
+app.post('/user/perfectInfo',function(request,response){
+    proxy('user/perfectInfo',response,'POST');
+})
+
+
 app.post('/user/login',function(request,response){
     proxy('user/login',response,'POST');
 })
@@ -38,6 +45,10 @@ app.post('/user/login',function(request,response){
 app.get('/user/safetyInfo',function(request,response){
     proxy('user/safetyInfo',response);
 })
+
+
+
+
 
 
 var server = app.listen(11111, function () {

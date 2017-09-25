@@ -17,6 +17,7 @@ define([
     "css!../demoStyle/css/component.css",
     "css!../demoStyle/css/style-responsive.css",
     "css!../demoStyle/css/parallax-slider/parallax-slider.css",
+    "css!../demoStyle/css/seq-slider/sequencejs-theme.sliding-horizontal-parallax.css",
 
 
 

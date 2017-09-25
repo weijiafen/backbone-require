@@ -89,6 +89,26 @@ define([],function(){
 		return dtd.promise();
 	}
 
+	service.perfectInfo=function(data){
+		var dtd=$.Deferred();
+		$.post('/user/perfectInfo',data,function(res){
+			console.log("done perfectInfo")
+			if(isSuccess(res)){
+				//执行成功会将res返回给then
+				console.log(data);
+				console.log(res.msg);
+				dtd.resolve(res);
+			}else{
+				dtd.reject();
+			}	
+			
+		})
+		return dtd.promise();
+	}
+
+
+
+
 
 	service.safetyInfo=function(){
 		var dtd=$.Deferred();
@@ -105,23 +125,6 @@ define([],function(){
 		})
 		return dtd.promise();
 	}
-
-	// 	service.safetyInfo=function(data){
-	// 	var dtd=$.Deferred();
-	// 	$.get('/user/safetyInfo',data,function(res){
-	// 		console.log("done safetyInfo")
-	// 		if(isSuccess(res)){
-	// 			//执行成功会将res返回给then
-	// 			console.log(res.data);
-	// 			dtd.resolve(res);
-	// 		}else{
-	// 			dtd.reject();
-	// 		}
-	// 	})
-	// 	return dtd.promise();
-	// }
-
-
 
 
 	return service;
