@@ -8,14 +8,14 @@ define([],function(){
 		return true;
 	}
 	service.sendcode=function(data){
-		console.log("进入输出验证码方法");
 		var dtd=$.Deferred();
 		$.post('/user/sendcode/:username',data,function(res){
 			console.log("done sendcode")
 			if(isSuccess(res)){
 				//执行成功会将res返回给then				
 				dtd.resolve(res);
-				console.log(res.msg);
+				console.log(data);
+				console.log(res.message);
 			}else{
 				dtd.reject();
 			}	
@@ -26,37 +26,53 @@ define([],function(){
 
 
 	service.userRegister=function(data){
-		console.log("进入userRegister方法");
 		var dtd=$.Deferred();
-		$.post('/user/register',data,function(res){
-			console.log("done userRegister")
-			if(isSuccess(res)){
-				//执行成功会将res返回给then
-				console.log(data);
-				dtd.resolve(res);
-			}else{
-				dtd.reject();
-			}	
-		},"json")
+		$.ajax({
+			url:"/user/register",
+			type:"post",
+			dataType:"json",
+			contentType:"application/json",
+			data:JSON.stringify(data),
+
+			success:function(res){
+				console.log("done userRegister");
+				if(isSuccess(res)){
+					//执行成功会将res返回给then
+					console.log(data);
+					console.log(res.message);
+					dtd.resolve(res);
+				}else{
+					dtd.reject();
+				}	
+			}
+		});
 		return dtd.promise();
 	}
+
 
 
 	service.userLogin=function(data){
 		var dtd=$.Deferred();
-		$.post('/user/login',data,function(res){
-			console.log("done userLogin")
-			if(isSuccess(res)){
-				//执行成功会将res返回给then
-				console.log(data);
-				dtd.resolve(res);
-			}else{
-				dtd.reject();
-			}	
-			
-		})
+        $.ajax({
+	        url: "/user/login",
+	        type: "post",
+	        dataType: "json",
+	        contentType: "application/json",
+	        data: JSON.stringify(data),
+	        success: function (res) {
+	            console.log("done userLogin");
+				if(isSuccess(res)){
+					console.log(data);
+					console.log(res.message);
+					dtd.resolve(res);
+				}else{
+					dtd.reject();
+				}	
+			}
+		});
 		return dtd.promise();
 	}
+
 
 	service.mock=function(){
 		var dtd=$.Deferred();
@@ -73,21 +89,28 @@ define([],function(){
 		return dtd.promise();
 	}
 
+
+
 	service.info=function(){
 		var dtd=$.Deferred();
-		$.get('/user/checkUserInfo',function(res){
-			console.log("done info")
+        $.ajax({
+            url: "/user/checkUserInfo",
+            type: "get",
+		success:function(res){
+			console.log("done Checkinfo");
 			if(isSuccess(res)){
 				//执行成功会将res返回给then
-				dtd.resolve(res);
 				console.log(res.data);
-				// infoData = res.data;
+				console.log(res.message);
+				dtd.resolve(res);
 			}else{
 				dtd.reject();
-			}
-		})
-		return dtd.promise();
-	}
+			}	
+		}
+	});
+	return dtd.promise();
+}
+
 
 	service.perfectInfo=function(data){
 		var dtd=$.Deferred();
@@ -107,25 +130,47 @@ define([],function(){
 	}
 
 
-
-
-
 	service.safetyInfo=function(){
 		var dtd=$.Deferred();
-		$.get('/user/safetyInfo',function(res){
-			console.log("done safetyInfo")
-			if(isSuccess(res)){
-				//执行成功会将res返回给then
-				dtd.resolve(res);
-				console.log(res.data);
-				// infoData = res.data;
-			}else{
-				dtd.reject();
+        $.ajax({
+		    url: "/user/checkSafetyInfo",
+		    type: "get",
+		    success: function (res) {
+		    	console.log("done checkSafetyInfo");
+		        if(isSuccess(res)){
+					dtd.resolve(res);
+					console.log(res.data);	
+				}else{
+					dtd.reject();
+				}	
 			}
-		})
+		});
 		return dtd.promise();
 	}
 
+	service.perfectSafetyInfo=function(data){
+		var dtd=$.Deferred();
+		$.ajax({
+			url:"/user/perfectSafetyInfo",
+			type:"post",
+			dataType:"json",
+			contentType:"application/json",
+			data:JSON.stringify(data),
+
+			success:function(res){
+				console.log("done perfectSafetyInfo");
+				if(isSuccess(res)){
+					//执行成功会将res返回给then
+					console.log(data);
+					console.log(res.message);
+					dtd.resolve(res);
+				}else{
+					dtd.reject();
+				}	
+			}
+		});
+		return dtd.promise();
+	 }
 
 	return service;
 })

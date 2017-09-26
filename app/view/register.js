@@ -7,11 +7,13 @@ define([
         el: '#content',
         events:{
             "click #submit":"submit",
-            "click #send":"sendcode"
+            "click #send":"sendcode",
         },
         initialize:function () {
             // alert(123);
         },
+
+
 
         sendcode: function(){
             username = $('#username').val();
@@ -21,8 +23,32 @@ define([
                 var data={
                     username : username,
                 };
-                // console.log("即将进入service");
-                service.sendcode(data);
+
+                service.sendcode(data).then(function(){
+                        var countdown=6; 
+                        var obj = $("#send");
+                        settime(obj);
+                        
+                    function settime(obj) { //发送验证码倒计时
+                        if (countdown == 0) { 
+                            obj.attr('disabled',false); 
+                            //obj.removeattr("disabled"); 
+                            obj.val("免费获取验证码");
+                            countdown = 6; 
+                            return;
+                        } else { 
+                            obj.attr('disabled',true);
+                            obj.val("重新发送(" + countdown + ")");
+                            countdown--; 
+                        } 
+                    setTimeout(function() { 
+                        settime(obj) }
+                        ,1000) 
+                    }
+
+                });
+                
+                
             }
         },
 
@@ -44,11 +70,8 @@ define([
                                 password : pass,
                                 verification_code : verification_code,
                             };
-                        service.userRegister(data);
-                        // window.location.href = "#/";
-                    }
-
-
+                         service.userRegister(data);
+                         }
         },
 
         render: function(param) {

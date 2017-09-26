@@ -21,7 +21,7 @@ app.get('/mock',function(request,response){
 })
 
 app.post('/user/sendcode/:username',function(request,response){
-    proxy(`user/sendcode/${request.params.username}`,response,'POST');
+    proxy(`user/sendcode/${request.params.username}`,response,'POST',request);
 })
 
 app.post('/user/register',function(request,response){
@@ -34,18 +34,21 @@ app.get('/user/checkUserInfo',function(request,response){
 })
 
 app.post('/user/perfectInfo',function(request,response){
-    proxy('user/perfectInfo',response,'POST');
+    proxy('user/perfectInfo',response,'POST',request);
 })
 
 
 app.post('/user/login',function(request,response){
-    proxy('user/login',response,'POST');
+    proxy('user/login',response,'POST',request);
 })
 
-app.get('/user/safetyInfo',function(request,response){
-    proxy('user/safetyInfo',response);
+app.get('/user/checkSafetyInfo',function(request,response){
+    proxy('user/checkSafetyInfo',response);
 })
 
+app.post('/user/perfectSafetyInfo',function(request,response){
+    proxy('user/perfectSafetyInfo',response,'POST',request);
+})
 
 
 
@@ -94,20 +97,27 @@ function requestProxy(path,response,method,request){
             'Content-Type': 'application/json'
         }
     }
+    
     if(method=='POST'){
         requestConfig.body=request.body
         // requestConfig.body=JSON.stringify(request.body)
         request2(requestConfig,function(r,resp,body){
             console.log("resp")
+            console.log(body)
+
             response.writeHead(200, {'Content-Type': 'application/json'});  
-            response.write(body);  
+            response.write(JSON.stringify(body));
+            // response.write(""+body);  
+             // response.write("success");
             response.end();
         })
     }else{
         request2(useUrl,function(r,resp,body){
-            console.log("resp")
+            console.log("resp2")
+            console.log(body)
             response.writeHead(200, {'Content-Type': 'application/json'});  
-            response.write(body);  
+  
+
             response.end();
         })
     }

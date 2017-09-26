@@ -20,6 +20,7 @@ define(function(require, exports, module) {
             "comRegulation":"comRegulation",
             "record":"record",
             "safetyInfo":"safetyInfo",
+            "forgetPass":"forgetPass",
             
 		},
 		index: function() {
@@ -147,6 +148,16 @@ define(function(require, exports, module) {
         safetyInfo:function(){
             this.index().then(function(){
                 require(['./view/safetyInfo'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        forgetPass:function(){
+            this.index().then(function(){
+                require(['./view/forgetPass'],function(View){
                     var view = new View();
                     view.render();
                 });
