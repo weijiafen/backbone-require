@@ -25,7 +25,7 @@ define([
                 };
 
                 service.sendcode(data).then(function(){
-                        var countdown=6; 
+                        var countdown=20; 
                         var obj = $("#send");
                         settime(obj);
                         
@@ -34,7 +34,7 @@ define([
                             obj.attr('disabled',false); 
                             //obj.removeattr("disabled"); 
                             obj.val("免费获取验证码");
-                            countdown = 6; 
+                            countdown = 20; 
                             return;
                         } else { 
                             obj.attr('disabled',true);

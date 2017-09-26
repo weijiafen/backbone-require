@@ -150,58 +150,29 @@
 
 
 <div id="content">
-<!-- 	<div style="background-color: pink">
-     <img src="app/demoStyle/img/blog/img8.jpg" alt="突突突突">   
-    </div> -->
+	<!--<div style="background-color: pink">-->
+     <!--<img src="app/demoStyle/img/blog/img8.jpg" alt="突突突突">   -->
+    <!--</div>-->
 
-        <!-- Sequence Modern Slider -->
-    <div id="sequence-theme" class="sequence-inner">
-      <div id="sequence">
-        <img class="sequence-prev" src="app/demoStyle/img/seq-slider/bt-prev.png" alt="Previous" style="display: inline;">
-        <img class="sequence-next" src="app/demoStyle/img/seq-slider/bt-next.png" alt="Next" style="display: inline;">
 
-        <ul class="sequence-canvas">
-          <li class="animate-out" style="display: list-item; z-index: 1;">
-            <div class="info" style="">
-              <h2>
-                Built using Sequence.js
-              </h2>
-              <p>
-                The Responsive Slider with Advanced CSS3 Transitions
-              </p>
+
+    <div class="js-silder">
+        <div class="silder-scroll">
+            <div class="silder-main">
+                <div class="silder-main-img">
+                    <img src="/app/demoStyle/img/parallax-slider/images/main-bg.jpg" alt="">
+                </div>
+                <div class="silder-main-img">
+                    <img src="/app/demoStyle/img/tg-black-bg.png" alt="">
+                </div>
+                <div class="silder-main-img">
+                    <img src="/app/demoStyle/img/seq-slider/abstract-16729_1920.jpg" alt="">
+                </div>
             </div>
-            <img class="sky" src="app/demoStyle/img/seq-slider/bg-clouds.png" alt="Blue Sky" style="">
-            <img class="balloon" src="app/demoStyle/img/seq-slider/balloon.png" alt="Balloon" style="">
-          </li>
-          <li class="animate-in" style="display: list-item; z-index: 3;">
-            <div class="info" style="">
-              <h2>
-                Creative Control
-              </h2>
-              <p>
-                Create Acme sliders using CSS3 transitions -- no jQuery knowledge required!
-              </p>
-            </div>
-            <img class="sky" src="app/demoStyle/img/seq-slider/bg-clouds.png" alt="Blue Sky" style="">
-            <img class="aeroplane" src="app/demoStyle/img/seq-slider/aeroplane.png" alt="Aeroplane" style="">
-          </li>
-          <li class="animate-out" style="display: list-item; z-index: 1;">
-            <div class="info" style="">
-              <h2>
-                Cutting Edge
-              </h2>
-              <p>
-                Supports modern browsers, old browsers (IE7+), touch devices and responsive designs
-              </p>
-            </div>
-            <img class="sky" src="app/demoStyle/img/seq-slider/bg-clouds.png" alt="Blue Sky" style="">
-            <img class="kite" src="app/demoStyle/img/seq-slider/kite.png" alt="Kite" style="">
-          </li>
-        </ul>
-      </div>
+        </div>
     </div>
-    <!--/sequence-theme-->
-    <!-- End of Sequence Modern Slider -->
+
+
 
     
 
@@ -302,3 +273,17 @@
       </div>
     </footer>
     <!-- footer end -->
+
+   <script>
+       $(function (){
+           $(".js-silder").silder({
+               auto: true,//自动播放，传入任何可以转化为true的值都会自动轮播
+               speed: 20,//轮播图运动速度
+               sideCtrl: true,//是否需要侧边控制按钮
+               bottomCtrl: true,//是否需要底部控制按钮
+               defaultView: 0,//默认显示的索引
+               interval: 3000,//自动轮播的时间，以毫秒为单位，默认3000毫秒
+               activeClass: "active",//小的控制按钮激活的样式，不包括作用两边，默认active
+           });
+       });
+   </script>
