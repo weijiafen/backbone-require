@@ -33,7 +33,7 @@ define([
             var phone = $("#phone").val();
 
             if (id==''||gender==''||realName==''||headerImg==''||addr==''||email==''||phone=='') {
-                alert("请输出完整信息");
+                bootbox.alert("请输出完整信息");
                 return false;
             }else{
                 var data = {
