@@ -22,9 +22,9 @@ define(function(require, exports, module) {
             "safetyInfo":"safetyInfo",
             
 		},
-		index: function() {
+		index: function(secondMenu) {
             var dtd=$.Deferred();
-            if(!isMountIndex){
+            if(!isMountIndex||!secondMenu){
                 $("#main").html('')
                 require(['./view/index'],function(View){
                     var view = new View();
@@ -39,7 +39,7 @@ define(function(require, exports, module) {
             return dtd.promise();
 		},
 		entry:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/entry'],function(View){
                     var view = new View();
                     view.render();
@@ -49,7 +49,7 @@ define(function(require, exports, module) {
         },
         text:function(){
             // $("#main").html('')
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/template'],function(View){
                     var view = new View();
                     view.render();
@@ -58,7 +58,7 @@ define(function(require, exports, module) {
             
         },
         requireCss:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/requireCss'],function(View){
                     var view = new View();
                     view.render();
@@ -67,7 +67,7 @@ define(function(require, exports, module) {
             
         },
         eventDemo:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/eventDemo'],function(View){
                     var view = new View();
                     view.render();
@@ -76,7 +76,7 @@ define(function(require, exports, module) {
             
         },
         params:function(orderId,type){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/params'],function(View){
                     var view = new View();
                     view.render({orderId:orderId,type:type});
@@ -86,7 +86,7 @@ define(function(require, exports, module) {
         },
 
         myself:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/myself'],function(View){
                     var view = new View();
                     view.render();
@@ -96,7 +96,7 @@ define(function(require, exports, module) {
         },
         
         register:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/register'],function(View){
                     var view = new View();
                     view.render();
@@ -106,7 +106,7 @@ define(function(require, exports, module) {
         },
 
         login:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/login'],function(View){
                     var view = new View();
                     view.render();
@@ -116,7 +116,7 @@ define(function(require, exports, module) {
         },
 
         regulation:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/regulation'],function(View){
                     var view = new View();
                     view.render();
@@ -125,7 +125,7 @@ define(function(require, exports, module) {
             
         },
         comRegulation:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/comRegulation'],function(View){
                     var view = new View();
                     view.render();
@@ -135,7 +135,7 @@ define(function(require, exports, module) {
         },
 
         record:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/record'],function(View){
                     var view = new View();
                     view.render();
@@ -145,7 +145,7 @@ define(function(require, exports, module) {
         },
 
         safetyInfo:function(){
-            this.index().then(function(){
+            this.index(1).then(function(){
                 require(['./view/safetyInfo'],function(View){
                     var view = new View();
                     view.render();
