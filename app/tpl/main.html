@@ -149,34 +149,49 @@
     <!--header end-->
 
 
+<!-- 首页正文部分 -->
 <div id="content">
-	<!--<div style="background-color: pink">-->
-     <!--<img src="app/demoStyle/img/blog/img8.jpg" alt="突突突突">   -->
-    <!--</div>-->
 
-
-
-    <div class="js-silder">
-        <div class="silder-scroll">
-            <div class="silder-main">
-                <div class="silder-main-img">
-                    <img src="/app/demoStyle/img/parallax-slider/images/main-bg.jpg" alt="">
-                </div>
-                <div class="silder-main-img">
-                    <img src="/app/demoStyle/img/tg-black-bg.png" alt="">
-                </div>
-                <div class="silder-main-img">
-                    <img src="/app/demoStyle/img/seq-slider/abstract-16729_1920.jpg" alt="">
-                </div>
-            </div>
+  <!-- 轮播台 -->
+  <div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>   
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="/app/demoStyle/img/parallax-slider/images/main-bg.jpg" alt="First slide">
+            <div class="carousel-caption">标题 1</div>
+        </div>
+        <div class="item">
+            <img src="/app/demoStyle/img/parallax-slider/images/main-bg.jpg" alt="Second slide">
+            <div class="carousel-caption">标题 2</div>
+        </div>
+        <div class="item">
+            <img src="/app/demoStyle/img/parallax-slider/images/main-bg.jpg" alt="Third slide">
+            <div class="carousel-caption">标题 3</div>
         </div>
     </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel" 
+        data-slide="prev">&lsaquo;
+    </a>
+    <a class="carousel-control right" href="#myCarousel" 
+        data-slide="next">&rsaquo;
+    </a>
+  </div>
+<!-- 轮播台结束 -->
 
 
 
     
 
 </div>
+
+<!-- 首页正文部分结束 -->
 
 
 <!--footer start-->
@@ -274,16 +289,3 @@
     </footer>
     <!-- footer end -->
 
-   <script>
-       $(function (){
-           $(".js-silder").silder({
-               auto: true,//自动播放，传入任何可以转化为true的值都会自动轮播
-               speed: 20,//轮播图运动速度
-               sideCtrl: true,//是否需要侧边控制按钮
-               bottomCtrl: true,//是否需要底部控制按钮
-               defaultView: 0,//默认显示的索引
-               interval: 3000,//自动轮播的时间，以毫秒为单位，默认3000毫秒
-               activeClass: "active",//小的控制按钮激活的样式，不包括作用两边，默认active
-           });
-       });
-   </script>

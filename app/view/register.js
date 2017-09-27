@@ -19,6 +19,8 @@ define([
             username = $('#username').val();
             if (username=='') {
                 alert("请输入手机号码");
+                
+
             }else{
                 var data={
                     username : username,
