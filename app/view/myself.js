@@ -1,7 +1,8 @@
 define([
     "text!../tpl/myself.html",
     "../util/service",
-    ],function(tpl,service) {
+    "text!../tpl/loading.html",
+],function(tpl,service,loadingtpl) {
     var Backbone = require('backbone');
     var template = require('art-template');
     var main = Backbone.View.extend({
@@ -9,21 +10,11 @@ define([
         el: '#content',
         events:{
             "click #perfectInfo":"perfectInfo",
-            
         },
-
-
-       
         initialize:function () {
             // alert(123);
-
-            
         },
-
-
         perfectInfo:function(){
-
-            
             var id = $("#id").val();
             var gender = $("input[type='radio']:checked").val();
             var realName = $("#realName").val();
@@ -33,7 +24,11 @@ define([
             var phone = $("#phone").val();
 
             if (id==''||gender==''||realName==''||headerImg==''||addr==''||email==''||phone=='') {
-                bootbox.alert("请输出完整信息");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "请输入完整的信息", 
+                  callback: function(result){}
+                })
                 return false;
             }else{
                 var data = {
@@ -47,32 +42,51 @@ define([
                 };
                 service.perfectInfo(data);
                 $('#alterInfo').modal('hide');
-                // window.location.reload();
+                var sex;
+                if (gender==1) {
+                     sex = "男";
+
+                }else if (gender==0) {
+                     sex = "女";
+                }
+
+
+                /*修改个人中心各项内容*/
+                /*这种方法会覆盖原本的样式，只能手写空格了*/
+
+                $('#newSex').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+sex);
+                $('#newRealName').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+realName);
+                $('#newHeaderImg').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+headerImg);
+                $('#newAddr').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+addr);
+                $('#newEmail').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+email);
+                $('#newPhone').html('&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+'&nbsp;'+phone);
+
+
 
             }
         },
 
-
-        render: function(param) {           
+        render: function(param) {
+            $('#content').html(loadingtpl);
             service.info().then(function(res){
-                 var infoData = res.data;
-                 // console.log(infoData);
-                 var id = infoData.id;
-                 var gender = infoData.gender;
-                 var realName = infoData.realName;
-                 var headerImg = infoData.headerImg;
-                 var email = infoData.email;
-                 var addr = infoData.addr;
-                 var phone = infoData.phone;
+                var infoData = res.data;
+                // console.log(infoData);
+                var id = infoData.id;
+                var gender = infoData.gender;
+                var realName = infoData.realName;
+                var headerImg = infoData.headerImg;
+                var email = infoData.email;
+                var addr = infoData.addr;
+                var phone = infoData.phone;
+                var sex;
+                if (gender==1) {
+                     sex = "男";
 
-                 if (gender==1) {
-                    var sex = "男";
-                    
-                     }else if (gender==0) {
-                        var sex = "女"; 
-                     }
+                }else if (gender==0) {
+                     sex = "女";
+                }
+                $('#content').html(template.compile(tpl)({
 
-                 $('#content').html(template.compile(tpl)({
                     data :{
                         id : id,
                         sex:sex,
@@ -81,13 +95,15 @@ define([
                         email:email,
                         addr:addr,
                         phone:phone,
-                    } ,
+                    }
+
                 }));
-                 if (sex == '男') {
+
+                if (sex == '男') {
                     $('#male').attr('checked', 'true');
-                 }else if (true) {
+                }else {
                     $('#female').attr('checked', 'true');
-                 }
+                }
             });
         }
     });

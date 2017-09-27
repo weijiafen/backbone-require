@@ -22,7 +22,7 @@ require.config({
 		// environment.
 		"backbone": {
 			// These are the two hard dependencies that will be loaded first.
-			deps: ["jquery", "underscore","art-template"],
+			deps: ["underscore","art-template"],
 
 			// This maps the global `Backbone` object to `require("backbone")`.
 			exports: "Backbone"

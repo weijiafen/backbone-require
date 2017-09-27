@@ -9,7 +9,10 @@ define([
     // "../demoStyle/js/jquery.flexslider.js",
     // "../demoStyle/js/superfish.js",
 
-    "css!../demoStyle/css/bootstrap.min.css",
+    // "css!../demoStyle/css/bootstrap.min.css",
+    "css!../lib/bootstrap/dist/css/bootstrap.css",
+
+
     "css!../demoStyle/assets/font-awesome/css/font-awesome.css",
     "css!../demoStyle/css/style.css",
 
@@ -25,6 +28,8 @@ define([
     // "css!../demoStyle/css/style-responsive.css",
     // "css!../demoStyle/css/parallax-slider/parallax-slider.css",
     // "css!../demoStyle/css/seq-slider/sequencejs-theme.sliding-horizontal-parallax.css",
+
+    "css!../demoStyle/css/loading.css",
 
 
 

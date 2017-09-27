@@ -18,7 +18,11 @@ define([
         sendcode: function(){
             username = $('#username').val();
             if (username=='') {
-                alert("请输入手机号码");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "请输入手机号码", 
+                  callback: function(result){}
+                })
                 
 
             }else{
@@ -61,10 +65,19 @@ define([
             conpass = $('#conpass').val();
             verification_code = $('#verification_code').val();
              if(username=='' || pass=='' || conpass=='' || verification_code==''){
-                    alert("请输入完整信息");
+                    bootbox.confirm({ 
+                      size: "small",
+                      message: "请输入完整信息", 
+                      callback: function(result){}
+                    })
                     return false;
                 }else if (pass!=conpass) {
-                    alert("密码前后不一致，请重新输入");
+                    bootbox.confirm({ 
+                      size: "small",
+                      message: "密码前后不一致，请重新输入", 
+                      callback: function(result){}
+                    })
+
                     return false;
                 }else{ 
                     var data = {

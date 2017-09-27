@@ -16,9 +16,15 @@ define([
         submit:function(){
             var username = $('#username').val();
             var password = $('#password').val();
-            verification_code = $('#code').val();
-            if (username==''||password=='') {
-                alert("请输出完整信息");
+            var verification_code = $('#code').val();
+            if (username==''||password==''||verification_code=='') {
+                // alert("请输出完整信息");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "请输入完整信息", 
+                  callback: function(result){}
+                })
+                
                 return false;
             }else{
                 var data = {

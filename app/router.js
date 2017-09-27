@@ -20,6 +20,8 @@ define(function(require, exports, module) {
             "comRegulation":"comRegulation",
             "record":"record",
             "safetyInfo":"safetyInfo",
+            "loading":"loading",
+
             
 		},
 		index: function(secondMenu) {
@@ -153,6 +155,17 @@ define(function(require, exports, module) {
             })
             
         },
+
+        loading:function(){
+            this.index(1).then(function(){
+                require(['./view/loading','./view/myself'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
 
 
         

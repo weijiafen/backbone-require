@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 
 	// External dependencies.
 	var _ = require("underscore");
-	var $ = require("jquery");
+
 	var Backbone = require("backbone");
 
 	// Alias the module for easier identification.

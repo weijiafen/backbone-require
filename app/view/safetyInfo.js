@@ -1,7 +1,8 @@
 define([
     "text!../tpl/safetyInfo.html",
     "../util/service",
-    ],function(tpl,service) {
+    "text!../tpl/loading.html",
+    ],function(tpl,service,loadingtpl) {
     var Backbone = require('backbone');
     var template = require('art-template');
 
@@ -26,10 +27,18 @@ define([
                 if(writeEmail!=''){
                     console.log("新安全邮箱是："+writeEmail);
                 }else{
-                    alert("请输入新安全邮箱地址");
+                    bootbox.confirm({ 
+                      size: "small",
+                      message: "请输入新安全邮箱地址", 
+                      callback: function(result){}
+                    })
                 }
             }else{
-                alert("安全不一致，请重新输入");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "安全答案不一致，请重新输入", 
+                  callback: function(result){}
+                })
             }
         },
 
@@ -40,10 +49,18 @@ define([
                 if(writePayment!=''){
                     console.log("新支付密码是："+writePayment);
                 }else{
-                    alert("请输入新支付密码");
+                    bootbox.confirm({ 
+                      size: "small",
+                      message: "请输入新支付密码", 
+                      callback: function(result){}
+                    })
                 }
             }else{
-                alert("安全问题不一致，请重新输入");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "安全答案不一致，请重新输入", 
+                  callback: function(result){}
+                })
             }
         },
 
@@ -56,11 +73,19 @@ define([
             var setConpaymentPassword = $('#setConpaymentPassword').val();
 
             if (setQuestion==''||setAnswer==''||setSafetyEmail==''||setPaymentPassword==''||setConpaymentPassword=='') {
-                alert("请输入完整信息");
+                bootbox.confirm({ 
+                  size: "small",
+                  message: "请输入完整信息", 
+                  callback: function(result){}
+                })
                 return false;
             }else{
                 if (setPaymentPassword!=setConpaymentPassword) {
-                    alert("密码和确认密码不一致");
+                    bootbox.confirm({ 
+                      size: "small",
+                      message: "密码和确认密码不一致", 
+                      callback: function(result){}
+                    })
                     return false;
                 }else{
                     var data = {
@@ -81,6 +106,7 @@ define([
 
 
          render: function(param) {
+             $('#content').html(loadingtpl);
             service.safetyInfo().then(function(res){
                 var safeData = res.data;
 
@@ -104,9 +130,6 @@ define([
                  var coverAnswer = answer.replace(answer,"**************");
                  
                  /*加密支付密码*/
-                 // if (coverPayment!='') {
-                 //    coverPayment = paymentPassword.replace(paymentPassword,"*******");
-                 // }
                  var coverPayment = paymentPassword.replace(paymentPassword,"*******");
 
                  /*安全级别设置*/
