@@ -52,11 +52,6 @@ define([
             }
         },
 
-           
-
-
-
-
 
         render: function(param) {           
             service.info().then(function(res){
@@ -70,17 +65,14 @@ define([
                  var addr = infoData.addr;
                  var phone = infoData.phone;
 
-
                  if (gender==1) {
                     var sex = "男";
                     
-                 }else if (gender==0) {
-                    var sex = "女"; 
-                 }
-
+                     }else if (gender==0) {
+                        var sex = "女"; 
+                     }
 
                  $('#content').html(template.compile(tpl)({
-
                     data :{
                         id : id,
                         sex:sex,
@@ -89,24 +81,14 @@ define([
                         email:email,
                         addr:addr,
                         phone:phone,
-                    } 
-
+                    } ,
                 }));
-
                  if (sex == '男') {
                     $('#male').attr('checked', 'true');
                  }else if (true) {
                     $('#female').attr('checked', 'true');
-
                  }
-
-
-
-
-
             });
-
-
         }
     });
     return main;
