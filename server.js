@@ -6,12 +6,13 @@ var http = require('http');
 var request2 = require('request');
 var bodyParser=require('body-parser')
 //使用的mock方法选项
-// var proxy=easyMockproxy;
-var proxy=requestProxy;
+var proxy=easyMockproxy;
+// var proxy=requestProxy;
 app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
 app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
   extended: true
 }));
+
 app.use('/app', express.static('app'));
 app.use('/index.html', express.static('index.html'));
 
@@ -50,6 +51,9 @@ app.post('/user/perfectSafetyInfo',function(request,response){
     proxy('user/perfectSafetyInfo',response,'POST',request);
 })
 
+app.post('/personalLoan/checkLoanPlan',function(request,response){
+    proxy('personalLoan/checkLoanPlan',response,'POST',request);
+})
 
 
 

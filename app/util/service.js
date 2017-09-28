@@ -1,12 +1,12 @@
 define([],function(){
 	var service={};
-	// var isSuccess=function(res){
-	// 	if(res.status!=0){
-	// 		// alert(res.msg)
-	// 		return false;
-	// 	}
-	// 	return true;
-	// }
+	var isSuccess=function(res){
+		if(res.status!=0){
+			// alert(res.msg)
+			return false;
+		}
+		return true;
+	}
 	service.sendcode=function(data){
 		var username = data.username;
 		console.log(username);
@@ -216,6 +216,49 @@ define([],function(){
 		});
 		return dtd.promise();
 	 }
+
+       //   $("#plan").click(function () {
+    //     var loan_amount = $("#loan_amount").val();
+    //     var loan_tern = $("#loan_tern").val();
+    //     var totalInvest;
+    //     $.ajax({
+    //         url: "/personalLoan/checkLoanPlan",
+    //         data: {
+    //             "loan_amount": loan_amount,
+    //             "loan_tern": loan_tern
+    //         },
+    //         type: "post",
+    //         success: function (data) {
+    //             console.log(data);
+    //             $("#loanplan").empty();
+    //             $.each(data.list, function (index, item) {
+    //                 $("#loanplan").append(item.detailsMonth + " 利息：" + item.perMonthInvest +
+    //                     " 每月本金:" + item.perMonthPrincipal +
+    //                     " 总额:" + (item.perMonthInvest + item.perMonthPrincipal) + "<br/>");
+    //                 totalInvest = item.totalInvest;
+    //             })
+    //             $("#totalInvest").text(totalInvest);
+    //         }
+    //     });
+    // });
+    	service.checkLoanPlan=function(data){
+        	var dtd=$.Deferred();
+        $.ajax({
+            url: "/personalLoan/checkLoanPlan",
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                console.log(result);
+                console.log(result.message);
+            }
+
+        });
+        	return dtd.promise();
+    }
+
+
 
 	return service;
 })
