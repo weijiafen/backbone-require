@@ -25,7 +25,8 @@ define([
             if (checkAnswer==answer) {
                 var writeEmail = $('#writeEmail').val();
                 if(writeEmail!=''){
-                    console.log("新安全邮箱是："+writeEmail);
+                    console.log("新安全邮箱是："+writeEmail); //放入更新邮箱的方法
+
                 }else{
                     bootbox.confirm({ 
                       size: "small",
@@ -47,7 +48,7 @@ define([
             if (checkAnswer==answer) {
                 var writePayment = $('#writePayment').val();
                 if(writePayment!=''){
-                    console.log("新支付密码是："+writePayment);
+                    console.log("新支付密码是："+writePayment);  //放入更新支付密码的方法
                 }else{
                     bootbox.confirm({ 
                       size: "small",
@@ -124,13 +125,19 @@ define([
                  var becomeEmail = replaceEmail.replace(replaceEmail,"*****");
                  var finalEmail = frontEmail + becomeEmail + behindEmail;
 
+                  /*星星个数*/
+                  function repeat(str , n){
+                    return new Array(n+1).join(str);
+                  }
 
                  /*加密问题设置*/
+                 var answerLength = answer.length;
+                 var coverAnswer = repeat("*", answerLength);
 
-                 var coverAnswer = answer.replace(answer,"**************");
                  
                  /*加密支付密码*/
-                 var coverPayment = paymentPassword.replace(paymentPassword,"*******");
+                 var paymentLength = paymentPassword.length;
+                 var coverPayment = repeat("*", paymentLength);
 
                  /*安全级别设置*/
                  var safeFactor;

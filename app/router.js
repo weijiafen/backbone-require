@@ -21,6 +21,10 @@ define(function(require, exports, module) {
             "record":"record",
             "safetyInfo":"safetyInfo",
             "loading":"loading",
+            "personalLaon":"personalLaon",
+            "comLoan":"comLoan",
+            "borrow":"borrow",
+            "borrProcess":"borrProcess",
 
             
 		},
@@ -158,7 +162,47 @@ define(function(require, exports, module) {
 
         loading:function(){
             this.index(1).then(function(){
-                require(['./view/loading','./view/myself'],function(View){
+                require(['./view/loading'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        personalLaon:function(){
+            this.index(1).then(function(){
+                require(['./view/personalLaon'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        comLoan:function(){
+            this.index(1).then(function(){
+                require(['./view/comLoan'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        borrow:function(){
+            this.index(1).then(function(){
+                require(['./view/borrow'],function(View){
+                    var view = new View();
+                    view.render();
+                });
+            })
+            
+        },
+
+        borrProcess:function(){
+            this.index(1).then(function(){
+                require(['./view/borrProcess'],function(View){
                     var view = new View();
                     view.render();
                 });

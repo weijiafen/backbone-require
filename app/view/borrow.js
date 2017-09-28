@@ -1,5 +1,5 @@
 define([
-    "text!../tpl/comPages/comRegulation.html",
+    "text!../tpl/userPages/borrow.html",
     ],function(tpl) {
     var Backbone = require('backbone');
     var main = Backbone.View.extend({
