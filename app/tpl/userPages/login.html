@@ -26,15 +26,25 @@
             <div class="login-wrap">
                 <input type="text" class="form-control" placeholder="手机号码" id="username" name="username" autofocus>
                 <input type="password" class="form-control" placeholder="密码" id="password" name="password">
-                <input type="text" class="form-control" placeholder="验证码" id="code" name="verification_code">
 
-                <label class="checkbox" style="margin-left: 22px">
-                    <input type="checkbox" value="remember-me" > Remember me
-                    <span class="pull-right">
+                <div>
+                    <i>
+                        <img style="height: 35px;" id="codeImg" alt="点击更换" title="点击更换"
+                        src="http://192.168.1.176:8080/code/captcha-image" onclick="this.src='http://192.168.1.176:8080/code/captcha-image?d='+new Date()*1"/>
+                    </i>
+                    <input type="text" class="form-control" placeholder="验证码" id="code" name="verification_code" style="width: 180px;float: right">
+
+                </div>
+
+                <div>
+                <label class="checkbox" >
+                    <!--<input type="checkbox" value="remember-me" style=""> Remember me-->
+                    <!--<span class="pull-right">-->
                         <a data-toggle="modal" data-target="#forgetPass" style="cursor:pointer"> 忘记密码?</a>
-                    </span>
+                    <!--</span>-->
 
                 </label>
+                </div>
                 <button class="btn btn-lg btn-login btn-block" type="button" id="loginSubmit">登录</button>
 
                 <div class="registration">

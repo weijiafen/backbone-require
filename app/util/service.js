@@ -1,77 +1,122 @@
 define([],function(){
 	var service={};
-	var isSuccess=function(res){
-		if(res.status!=0){
-			alert(res.msg)
-			return false;
-		}
-		return true;
-	}
+	// var isSuccess=function(res){
+	// 	if(res.status!=0){
+	// 		// alert(res.msg)
+	// 		return false;
+	// 	}
+	// 	return true;
+	// }
 	service.sendcode=function(data){
-		var dtd=$.Deferred();
-		$.post('/user/sendcode/:username',data,function(res){
-			console.log("done sendcode")
-			if(isSuccess(res)){
-				//执行成功会将res返回给then				
-				dtd.resolve(res);
-				console.log(data);
-				console.log(res.message);
-			}else{
-				dtd.reject();
-			}	
-			
-		})
-		return dtd.promise();
-	}
+		var username = data.username;
+		console.log(username);
+
+        $.ajax({
+            url:"user/sendcode/" + username,
+            type: "post",
+            success: function (result) {
+                console.log(result);
+            }
+        });
+
+    }
+	// 	var dtd=$.Deferred();
+	// 	$.post('/user/sendcode/:username',data,function(res){
+	// 		console.log("done sendcode")
+	// 		if(isSuccess(res)){
+	// 			//执行成功会将res返回给then
+	// 			dtd.resolve(res);
+	// 			console.log(data);
+	// 			console.log(res.message);
+	// 		}else{
+	// 			dtd.reject();
+	// 		}
+	//
+	// 	})
+	// 	return dtd.promise();
+	// }
 
 
 	service.userRegister=function(data){
-		var dtd=$.Deferred();
-		$.ajax({
-			url:"/user/register",
-			type:"post",
-			dataType:"json",
-			contentType:"application/json",
-			data:JSON.stringify(data),
+        	var dtd=$.Deferred();
+        $.ajax({
+            url:"/user/register",
+            type:"post",
+            dataType:"json",
+            contentType:"application/json",
+            data:JSON.stringify(data),
+            success:function(result){
+                console.log(result.message);
+                console.log(data);
 
-			success:function(res){
-				console.log("done userRegister");
-				if(isSuccess(res)){
-					//执行成功会将res返回给then
-					console.log(data);
-					console.log(res.message);
-					dtd.resolve(res);
-				}else{
-					dtd.reject();
-				}	
-			}
-		});
-		return dtd.promise();
-	}
+            }
+        });
+        	return dtd.promise();
+    }
+
+
+	// 	var dtd=$.Deferred();
+	// 	$.ajax({
+	// 		url:"/user/register",
+	// 		type:"post",
+	// 		dataType:"json",
+	// 		contentType:"application/json",
+	// 		data:JSON.stringify(data),
+    //
+	// 		success:function(res){
+	// 			console.log("done userRegister");
+	//
+	// 			if(isSuccess(res)){
+	// 				//执行成功会将res返回给then
+	// 				// console.log(data);
+	// 				// console.log(res.message);
+	// 				console.log(res);
+	// 				dtd.resolve(res);
+	// 			}else{
+	// 				dtd.reject();
+	// 			}
+	// 		}
+	// 	});
+	// 	return dtd.promise();
+	// }
 
 
 
 	service.userLogin=function(data){
-		var dtd=$.Deferred();
+        	var dtd=$.Deferred();
         $.ajax({
-	        url: "/user/login",
-	        type: "post",
-	        dataType: "json",
-	        contentType: "application/json",
-	        data: JSON.stringify(data),
-	        success: function (res) {
-	            console.log("done userLogin");
-				if(isSuccess(res)){
-					console.log(data);
-					console.log(res.message);
-					dtd.resolve(res);
-				}else{
-					dtd.reject();
-				}	
-			}
-		});
-		return dtd.promise();
-	}
+            url: "/user/login",
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (result) {
+                console.log(result);
+            }
+
+        });
+        	return dtd.promise();
+    }
+	// 	var dtd=$.Deferred();
+     //    $.ajax({
+	//         url: "/user/login",
+	//         type: "post",
+	//         dataType: "json",
+	//         contentType: "application/json",
+	//         data: JSON.stringify(data),
+	//         success: function (res) {
+	//             console.log("done userLogin");
+	// 			if(isSuccess(res)){
+	// 				console.log(data);
+	// 				console.log(res.message);
+	// 				dtd.resolve(res);
+	// 			}else{
+	// 				dtd.reject();
+	// 			}
+	// 		}
+	// 	});
+	// 	return dtd.promise();
+	// }
 
 
 	service.mock=function(){

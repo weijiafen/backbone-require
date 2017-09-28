@@ -6,8 +6,8 @@ var http = require('http');
 var request2 = require('request');
 var bodyParser=require('body-parser')
 //使用的mock方法选项
-var proxy=easyMockproxy;
-// var proxy=requestProxy;
+// var proxy=easyMockproxy;
+var proxy=requestProxy;
 app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
 app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
   extended: true
@@ -86,9 +86,11 @@ function easyMockproxy(path,response,method,request){
 }
 function requestProxy(path,response,method,request){
     var ljUrl=`http://172.20.10.2:8080/${path}`;
-    var wjfUrl=`http://10.9.33.109:11112/${path}`
+    var wjfUrl=`http://10.9.33.109:11112/${path}`;
+    var maooCoffeeUrl = `http://192.168.1.176:8080/${path}`;
     //使用的url选项
-    var useUrl=ljUrl
+    // var useUrl=ljUrl
+    var useUrl = maooCoffeeUrl;
     var requestConfig={
         url:useUrl,
         method:method||'GET',
