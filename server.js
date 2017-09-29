@@ -6,15 +6,24 @@ var http = require('http');
 var request2 = require('request');
 var bodyParser=require('body-parser')
 //使用的mock方法选项
-var proxy=easyMockproxy;
-// var proxy=requestProxy;
+// var proxy=easyMockproxy;
+var proxy=requestProxy;
 app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
 app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
   extended: true
 }));
 
 app.use('/app', express.static('app'));
-app.use('/index.html', express.static('index.html'));
+app.get('/index.html', function(request,response){
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    fs.readFile(__dirname + '/index.html', {flag: 'r+', encoding: 'utf8'}, function (err, data) {
+        if(err) {
+         console.error(err);
+         return;
+        }
+        response.end(data);
+    });
+});
 
 
 app.get('/mock',function(request,response){
@@ -94,13 +103,14 @@ function requestProxy(path,response,method,request){
     var maooCoffeeUrl = `http://192.168.1.176:8080/${path}`;
     //使用的url选项
     // var useUrl=ljUrl
-    var useUrl = maooCoffeeUrl;
+    var useUrl = wjfUrl;
     var requestConfig={
         url:useUrl,
         method:method||'GET',
         json:true,
         headers:{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'cookie':request.headers.cookie
         }
     }
     
@@ -109,9 +119,13 @@ function requestProxy(path,response,method,request){
         // requestConfig.body=JSON.stringify(request.body)
         request2(requestConfig,function(r,resp,body){
             console.log("resp")
-            console.log(body)
+            console.log(resp.headers)
 
-            response.writeHead(200, {'Content-Type': 'application/json'});  
+            response.writeHead(200, {
+                'Content-Type': 'application/json',
+                'set-cookie':resp.headers['set-cookie']
+            });  
+            response.headers=resp.headers;
             response.write(JSON.stringify(body));
             // response.write(""+body);  
              // response.write("success");
@@ -121,9 +135,11 @@ function requestProxy(path,response,method,request){
         request2(useUrl,function(r,resp,body){
             console.log("resp2")
             console.log(body)
-            response.writeHead(200, {'Content-Type': 'application/json'});  
-  
-
+            response.writeHead(200, {
+                'Content-Type': 'application/json',
+                'set-cookie':resp.headers['set-cookie']
+            });  
+            response.write(JSON.stringify(body));
             response.end();
         })
     }
